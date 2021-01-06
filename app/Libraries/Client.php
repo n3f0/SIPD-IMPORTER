@@ -22,7 +22,13 @@ class Client{
         return $data;
     }
 
-    public function getCookie($data){
+    public function Cookie($data){
 
+    }
+
+    public function token($data){
+        $tmp=explode('<meta name="_token" content="',$data);
+        $tmp2=explode('">',$tmp[1]);
+        return $tmp2[0];
     }
 }
