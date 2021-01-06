@@ -11,7 +11,7 @@ class Home extends BaseController
 	public function index()
 	{
 		$session = session();
-		if($session->get('cookie') && $session->get('token')&&$session->get('id_user')){
+		if($session->get('cookie') && $session->get('token')){
 			return view('home');
 		}else{
 			return redirect()->to(site_url('login'));
