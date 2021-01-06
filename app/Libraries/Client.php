@@ -7,7 +7,7 @@ class Client{
 
     }
 
-    public function get($url,$cookie){
+    public function get($url,$cookie=''){
         $opt=[
             'http'=>[
                 'method'=>'GET',

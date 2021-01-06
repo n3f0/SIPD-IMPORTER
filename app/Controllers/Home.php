@@ -12,6 +12,14 @@ class Home extends BaseController
 		return view('home');
 	}
 
+
+	public function test(){
+		$url="https://nusantaraprov.sipd.kemendagri.go.id/daerah";
+
+		$data=$this->client->get($url);
+
+		var_dump($data['header']);
+	}
 	//--------------------------------------------------------------------
 
 }
