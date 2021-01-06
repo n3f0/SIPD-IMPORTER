@@ -31,7 +31,7 @@
                 <div id="login-row" class="row justify-content-center align-items-center">
                     <div id="login-column" class="col-md-6">
                         <div id="login-box" class="col-md-12">
-                            <form id="login-form" class="form" action="" method="post">
+                            <form id="login-form" class="form" action="<?=site_url('login/verify')?>" method="post">
                                 <h3 class="text-center text-info">Login</h3>
                                 <div class="form-group">
                                     <label for="username" class="text-info">Username:</label><br>
@@ -56,4 +56,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://nusantaraprov.sipd.kemendagri.go.id/assets/js/crypto_base64.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#login-form').submit(function(e){
+                e.preventDefault();
+                alert('test');
+            });
+        });
+    </script>
 </html>

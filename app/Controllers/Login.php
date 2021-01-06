@@ -19,4 +19,8 @@ class login extends BaseController{
         $this->session->set('cookie',$cookie);
         return view('login');
     }
+
+    public function verify(){
+        
+    }
 }
