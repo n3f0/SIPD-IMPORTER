@@ -21,6 +21,8 @@ class login extends BaseController{
     }
 
     public function verify(){
-        
+        //script login sipd
+        //jika login berhasil redirect home
+        //jika gagal redirect login/index
     }
 }
