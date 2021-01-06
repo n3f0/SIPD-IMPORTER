@@ -18,7 +18,7 @@ class Home extends BaseController
 
 		$data=$this->client->get($url);
 
-		var_dump($data['header']);
+		echo $this->client->token($data['content']);
 	}
 	//--------------------------------------------------------------------
 
