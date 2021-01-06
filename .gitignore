@@ -18,4 +18,4 @@ application/logs/*
 
 #codeigniter 4
 system/*
-writeble/*
+writable/*
