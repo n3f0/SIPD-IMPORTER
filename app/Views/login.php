@@ -35,11 +35,11 @@
                                 <h3 class="text-center text-info">Login</h3>
                                 <div class="form-group">
                                     <label for="username" class="text-info">Username:</label><br>
-                                    <input type="text" name="username" id="username" class="form-control" placeholder="User SIPD">
+                                    <input type="text" name="user_name" id="username" class="form-control" placeholder="User SIPD">
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="text" name="password" id="password" class="form-control" placeholder="Password SIPD">
+                                    <input type="text" name="user_password" id="password" class="form-control" placeholder="Password SIPD">
                                 </div>
                                 <div class="form-group">
                                     <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
@@ -60,7 +60,17 @@
         $(document).ready(function(){
             $('#login-form').submit(function(e){
                 e.preventDefault();
-                alert('test');
+                var form_data=CR64($('#login-form').serialize());
+                console.log(form_data);
+                $.ajax({
+                    type:'POST',
+                    data:{'cr64':form_data},
+                    url:$('#login-form').attr('action'),
+                    dataType:'JSON',
+                    success:function(data){
+                        alert(data.message);
+                    }
+                })
             });
         });
     </script>

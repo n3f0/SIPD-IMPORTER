@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-
+use CodeIgniter\HTTP\IncomingRequest;
 use App\Libraries\Client;
 
 class login extends BaseController{
@@ -21,8 +21,15 @@ class login extends BaseController{
     }
 
     public function verify(){
+        
         //script login sipd
         //jika login berhasil redirect home
         //jika gagal redirect login/index
+        $request=service('request');
+        $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/login';
+        $param = "_token=".$this->session->get('token')."&env=main&region=daerah&skrim=".$request->getPost('cr64');
+        $data=$this->client->post($url,$param,$this->session->get('cookie'));
+        echo $data['content'];
+       
     }
 }
