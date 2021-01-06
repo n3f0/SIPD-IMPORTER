@@ -23,7 +23,16 @@ class Client{
     }
 
     public function Cookie($data){
+        $tmp=[];
+        for($i=count($data)-1;$i>=0;$i--){
+            if(substr($data[$i],0,11)=="Set-Cookie:"){
+                $tmp2=explode(';',$data[$i]);
+                array_push($tmp,substr($tmp2[0],strlen("Set-Cookie:"),strlen($tmp2[0])-strlen("Set-Cookie:")));
+            }
+                
+        }
 
+        return implode(';',$tmp);
     }
 
     public function token($data){
