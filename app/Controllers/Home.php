@@ -17,8 +17,8 @@ class Home extends BaseController
 		$url="https://nusantaraprov.sipd.kemendagri.go.id/daerah";
 
 		$data=$this->client->get($url);
-
-		echo $this->client->token($data['content']);
+		
+		echo $this->client->Cookie($data['header']);
 	}
 	//--------------------------------------------------------------------
 
