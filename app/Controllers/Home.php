@@ -10,13 +10,23 @@ class Home extends BaseController
 	}
 	public function index()
 	{
-		$session = \Config\Services::session($config);
+		$session = session();
+		if($session->get('cookie') && $session->get('token')&&$session->get('id_user')){
+			return view('home');
+		}else{
+			return redirect()->to(site_url('login'));
+		}
 
-		return view('home');
+		
+	}
+
+	public function login(){
+		return view('login');
 	}
 
 
 	public function test(){
+		$session=session();
 
 		$url="https://".SIPD.".sipd.kemendagri.go.id/daerah";
 
