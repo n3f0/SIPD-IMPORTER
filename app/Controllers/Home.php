@@ -5,17 +5,19 @@ use App\Libraries\Client;
 class Home extends BaseController
 {
 	public function __construct(){
+		$session = session();
 		$this->client=new Client;
+		if($session->get('cookie') && $session->get('token')&&$session->get('id_user')){
+		}else{
+			return redirect()->to(site_url('login'));
+		}
 		
 	}
 	public function index()
 	{
-		$session = session();
-		if($session->get('cookie') && $session->get('token')){
+		
+		
 			return view('home');
-		}else{
-			return redirect()->to(site_url('login'));
-		}
 
 		
 	}

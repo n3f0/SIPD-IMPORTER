@@ -8,8 +8,16 @@
         <a class="navbar-brand" href="#">SIPD-Importer</a>
         <!-- Links -->
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">DATA MASTER</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">DATA MASTER </a>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Urusan</a>
+                <a class="dropdown-item" href="#">Bidang Urusan</a>
+                <a class="dropdown-item" href="#">Program</a>
+                <a class="dropdown-item" href="#">Kegiatan</a>
+                <a class="dropdown-item" href="#">Akun</a>
+                <a class="dropdown-item" href="#">OPD</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">APBD</a>
