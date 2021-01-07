@@ -174,3 +174,54 @@ CRITICAL - 2021-01-06 21:20:00 --> syntax error, unexpected '$param' (T_VARIABLE
 #3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2021-01-06 21:24:02 --> syntax error, unexpected '$param' (T_VARIABLE)
+#0 C:\xampp\htdocs\sipd-importer\system\Router\Router.php(195): CodeIgniter\Router\Router->autoRoute('login/verify')
+#1 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(793): CodeIgniter\Router\Router->handle('login/verify')
+#2 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(364): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-01-06 21:24:20 --> syntax error, unexpected '$param' (T_VARIABLE)
+#0 C:\xampp\htdocs\sipd-importer\system\Router\Router.php(195): CodeIgniter\Router\Router->autoRoute('login/verify')
+#1 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(793): CodeIgniter\Router\Router->handle('login/verify')
+#2 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(364): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-01-06 21:24:22 --> syntax error, unexpected '$param' (T_VARIABLE)
+#0 C:\xampp\htdocs\sipd-importer\system\Router\Router.php(195): CodeIgniter\Router\Router->autoRoute('login/verify')
+#1 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(793): CodeIgniter\Router\Router->handle('login/verify')
+#2 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(364): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-01-06 21:25:02 --> file_get_contents(https://nusantaraprovsipd.kemendagri.go.id/daerah/login): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(16): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=VvauJHWr...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:25:35 --> file_get_contents(https://nusantaraprovsipd.kemendagri.go.id/daerah/login): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(16): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=VvauJHWr...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:26:21 --> file_get_contents(https://nusantaraprovsipd.kemendagri.go.id/daerah/login): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(16): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=VvauJHWr...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
