@@ -24,5 +24,7 @@ class login extends BaseController{
         //script login sipd
         //jika login berhasil redirect home
         //jika gagal redirect login/index
+        
+
     }
 }

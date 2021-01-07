@@ -4,7 +4,18 @@ namespace App\Libraries;
 class Client{
 
     public function post($url,$param,$cookie){
-
+        $context= stream_context_create([
+            "http"=>[
+                "method"=>"POST",
+                "header"=>"Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n".
+                          "Cookie: ".$cookie."\r\n".
+                          "Content-Length: ".strlen($param)."\r\n",
+                "content"=>$param
+            ]
+        ]);
+        $response=file_get_contents($url,false,$context);
+        $data=['header'=>$http_response_header,'content'=>$response];
+        return $data;
     }
 
     public function get($url,$cookie=''){

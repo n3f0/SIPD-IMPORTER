@@ -150,3 +150,13 @@ CRITICAL - 2021-01-06 10:42:16 --> Invalid file: home.php
 #5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #7 {main}
+CRITICAL - 2021-01-06 20:55:24 --> file_get_contents(https://...@AeNPzWxJHwLOzc4nFclz9BCPCM5ABRsZDIEqu2JDMcfg5Q2@DAITGqXHkvlI94msbz1oVmlQ0whqm3): failed to open stream: HTTP request failed! HTTP/1.0 503 Service Unavailable
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 19, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(19): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(15): App\Libraries\Client->get('https://nusanta...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->index()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
