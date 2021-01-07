@@ -25,9 +25,16 @@ class login extends BaseController{
         //jika login berhasil redirect home
         //jika gagal redirect login/index
         $request=service('request');
-        $url='https://'.SIPD.'sipd.kemendagri.go.id/daerah/login';
+        $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/login';
         $param="_token=".$this->session->get('token')."&env=main&region=daerah&skrim=".$request->getPost('cr64');
         $data=$this->client->post($url,$param,$this->session->get('cookie'));
+        $json=json_decode($data['content']);
+        if($json->result=='userlogged'){
+            
+        }else{
+
+        }
+
         echo $data['content'];
         
     }

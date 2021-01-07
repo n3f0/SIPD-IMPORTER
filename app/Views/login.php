@@ -67,7 +67,14 @@
                     dataType:'JSON',
                     data:{cr64:form_data},
                     success:function(data){
-                        console.lg(data);
+                        console.log(data);
+                        if(data.result=='userlogged')
+                            alert(data.message);
+                        else
+                           
+                    },
+                    error:function(xhr,status,error){
+                        alert('Tidak dapat terhubung ke server SIPD');
                     }
                 });
             });

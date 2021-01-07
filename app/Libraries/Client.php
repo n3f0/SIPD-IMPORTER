@@ -3,6 +3,10 @@ namespace App\Libraries;
 
 class Client{
 
+    public function __construct(){
+        ini_set('max_execution_time',1000);
+    }
+
     public function post($url,$param,$cookie){
         $context= stream_context_create([
             "http"=>[

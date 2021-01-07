@@ -225,3 +225,63 @@ CRITICAL - 2021-01-06 21:26:21 --> file_get_contents(https://nusantaraprovsipd.k
 #5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #7 {main}
+CRITICAL - 2021-01-06 21:27:41 --> file_get_contents(https://nusantaraprovsipd.kemendagri.go.id/daerah/login): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(16): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=GU1YMmWr...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:30:09 --> file_get_contents(https://nusantaraprovsipd.kemendagri.go.id/daerah/login): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 20, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(20): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=GU1YMmWr...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:32:15 --> file_get_contents(https://nusantaraprovsipd.kemendagri.go.id/daerah/login): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 20, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(20): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=3Cm46Z4T...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:35:11 --> file_get_contents(https://...@AeNPzWxJHwLOzc4nFclz9BCPCM5ABRsZDIEqu2JDMcfg5Q2@DAITGqXHkvlI94msbz1oVmlQ0whqm3): failed to open stream: HTTP request failed! HTTP/1.0 503 Service Unavailable
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(34): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(15): App\Libraries\Client->get('https://nusanta...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->index()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:36:04 --> file_get_contents(https://...@AeNPzWxJHwLOzc4nFclz9BCPCM5ABRsZDIEqu2JDMcfg5Q2@DAITGqXHkvlI94msbz1oVmlQ0whqm3): failed to open stream: HTTP request failed! HTTP/1.0 503 Service Unavailable
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(34): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(15): App\Libraries\Client->get('https://nusanta...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->index()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-01-06 21:38:30 --> file_get_contents(https://nusantaraprov.sipd.kemendagri.go.id/daerah/login): failed to open stream: HTTP request failed! HTTP/1.0 503 Service Unavailable
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 20, Array)
+#1 C:\xampp\htdocs\sipd-importer\app\Libraries\Client.php(20): file_get_contents('https://nusanta...', false, Resource id #82)
+#2 C:\xampp\htdocs\sipd-importer\app\Controllers\Login.php(30): App\Libraries\Client->post('https://nusanta...', '_token=IZxT7ZPN...', ' SERVERUSED=SIP...')
+#3 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(918): App\Controllers\login->verify()
+#4 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+#5 C:\xampp\htdocs\sipd-importer\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\sipd-importer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
