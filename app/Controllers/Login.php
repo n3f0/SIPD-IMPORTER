@@ -29,21 +29,20 @@ class login extends BaseController{
         $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/login';
         $param="_token=".$this->session->get('token')."&env=main&region=daerah&skrim=".$request->getPost('cr64');
         $data=$this->client->post($url,$param,$this->session->get('cookie'));
-        try{
-        $json=json_decode(trim($data['content']));
-        }exception($n){
-            echo $data['encode'];die();
-        }
+        $json=json_decode($data['content']);
         if($json->result=='userlogged'){
-            //$urlreset='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/reset?idu='.base64_encode($json->id_user);
-            //$data=$this->client->get($urlreset,$this->session->get('cookie'));
-            //$this->session->set('token',$this->client->token($data['content']));
-            //$param="_token=".$this->session->get('token')."&env=main&region=daerah&skrim=".$request->getPost('cr64');
-            //$data=$this->client->post($url,$param,$this->session->get('cookie'));
-            echo $data['content'];
+            $urlreset='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/reset?idu='.base64_encode($json->id_user);
+            $data=$this->client->get($urlreset,$this->session->get('cookie'));
+            $this->session->set('token',$this->client->token($data['content']));
+            $this->session->set('cookie',$this->client->cookie($data['header']));
+            $this->verify();
         }else{
+            $this->session->set("id_user",$json->id_user);
+            $this->session->set("id_daerah",$json->id_daerah);
+            $this->session->set("id_unit",$json->id_unit);
             echo $data['content'];
         }
     }
+
 
 }

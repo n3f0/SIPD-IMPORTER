@@ -67,10 +67,11 @@
                     dataType:'JSON',
                     data:{cr64:form_data},
                     success:function(data){
-                        console.log(data);
-                        if(data.result=='userlogged')
+                        if(data.result.toString()=="userlogged")
                             alert(data.message);
-                        else{}
+                        else{
+                            window.location.href="<?=site_url()?>";
+                        }
                            
                     },
                     error:function(xhr,status,error){
