@@ -32,6 +32,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->add('/', 'Home::index',['filter' => 'auth']);
+$routes->add('/master', 'Master::index',['filter' => 'auth']);
+$routes->add('/master/urusan', 'Master::urusan',['filter' => 'auth']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

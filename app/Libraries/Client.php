@@ -26,7 +26,7 @@ class Client{
         $opt=[
             'http'=>[
                 'method'=>'GET',
-                'header'=>'Accept-language: en\r\n'.
+                'header'=>"Accept-language: en\r\n".
                           'Cookie: '.$cookie
             ]
         ];

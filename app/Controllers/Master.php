@@ -6,9 +6,9 @@ use App\Libraries\Client;
 class Master extends BaseController{
 
     public function __construct(){
-        $session = session();
+        $this->session = session();
 		$this->client=new Client;
-		if($session->get('cookie') && $session->get('token')&&$session->get('id_user')){
+		if($this->session->get('cookie') && $this->session->get('token')&&$this->session->get('id_user')){
 		}else{
 			return redirect()->to(site_url('login'));
 		}
@@ -19,7 +19,10 @@ class Master extends BaseController{
     }
 
     public function urusan(){
-
+        $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/main/budget/urusan/2021/tampil-urusan/'.$this->session->get('id_daerah').'/0';
+        $data=$this->client->get($url,$this->session->get('cookie'));
+        echo $data['content'];
+        //echo $this->session->get('cookie');
     }
 
     public function bidang(){
@@ -43,6 +46,6 @@ class Master extends BaseController{
     }
 
     public function opd(){
-        
+
     }
 }

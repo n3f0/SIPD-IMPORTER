@@ -44,5 +44,12 @@ class login extends BaseController{
         }
     }
 
+    public function logout(){
+        $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/logout?idu='.base64_encode($this->session->get('id_user'));
+        $data=$this->client->get($url,$this->session->get('cookie'));
+        $this->session->destroy();
+        return redirect()->to(site_url('login'));
+    }
+
 
 }
