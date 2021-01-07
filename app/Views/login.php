@@ -70,7 +70,7 @@
                         console.log(data);
                         if(data.result=='userlogged')
                             alert(data.message);
-                        else
+                        else{}
                            
                     },
                     error:function(xhr,status,error){
