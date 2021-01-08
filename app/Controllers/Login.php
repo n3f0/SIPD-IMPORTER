@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\Libraries\Client;
 use App\Libraries\Base64;
 
-class login extends BaseController{
+class Login extends BaseController{
 
     public function __construct(){
         $this->client=new Client();

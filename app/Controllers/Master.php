@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Libraries\Client;
+use App\Models\Urusan;
 
 class Master extends BaseController{
 
@@ -19,10 +20,9 @@ class Master extends BaseController{
     }
 
     public function urusan(){
-        $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/main/budget/urusan/2021/tampil-urusan/'.$this->session->get('id_daerah').'/0';
-        $data=$this->client->get($url,$this->session->get('cookie'));
-        echo $data['content'];
-        //echo $this->session->get('cookie');
+        $this->urusan=new Urusan();
+        
+        return view('master/urusan');
     }
 
     public function bidang(){
