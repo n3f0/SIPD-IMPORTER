@@ -16,17 +16,17 @@ class Master extends BaseController{
     }
 
     public function index(){
-
+        return redirect()->to(site_url('/'));
     }
 
     public function urusan(){
-        $this->urusan=new Urusan();
-        
-        return view('master/urusan');
+        $urusan=new Urusan();
+        $data['urusan']=$urusan->findAll();
+        return view('master/urusan',$data);
     }
 
     public function bidang(){
-
+        
     }
 
     public function program(){

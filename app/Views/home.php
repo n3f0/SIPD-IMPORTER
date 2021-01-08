@@ -12,7 +12,7 @@
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">DATA MASTER </a>
                 <div class="dropdown-menu">
                 <a class="dropdown-item" href="<?=site_url('master/urusan')?>">Urusan</a>
-                <a class="dropdown-item" href="#">Bidang Urusan</a>
+                <a class="dropdown-item" href="<?=site_url('master/bidang')?>">Bidang Urusan</a>
                 <a class="dropdown-item" href="#">Program</a>
                 <a class="dropdown-item" href="#">Kegiatan</a>
                 <a class="dropdown-item" href="#">Akun</a>

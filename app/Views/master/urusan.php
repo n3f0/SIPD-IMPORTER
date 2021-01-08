@@ -40,19 +40,25 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>KODE</th>
                         <th>URAIAN</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        foreach($urusan as $row){
+                            ?>
                     <tr>
-                        <td>1</td>
-                        <td>1.</td>
-                        <td>URUSAN WAJIB PELAYANAN DASAR</td>
-                        <td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Hapus</a></td>
+                        <td><?=$row->id_urusan?></td>
+                        <td><?=$row->kode_urusan?></td>
+                        <td><?=$row->nama_urusan?></td>
+                        <td><a href="#" class="btn btn-primary btn-sm">Edit</a> <a href="#" class="btn btn-danger btn-sm">Hapus</a></td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </main>
