@@ -5,6 +5,7 @@ use App\Libraries\Client;
 use App\Models\Urusan;
 use App\Models\Bidang;
 use App\Models\Program;
+use App\Models\Kegiatan;
 
 class Ajax extends BaseController{
 
@@ -46,6 +47,7 @@ class Ajax extends BaseController{
                 break;
             case 4:
                 //Import data Kegiatan
+                echo $this->import_kegiatan();
                 break;
             case 5:
                 //Import data SubKegiatan
@@ -98,5 +100,10 @@ class Ajax extends BaseController{
         }catch(Exception $e){
             return ['result'=>'1','message'=>'Error Import data'];
         }
+    }
+
+    private function import_kegiatan(){
+        $kegiatan=new Kegiatan;
+        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/";
     }
 }
