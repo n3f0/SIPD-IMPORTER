@@ -1,0 +1,29 @@
+﻿pagu pendapatan skpd:
+=====================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-unit/572/0
+
+Rincian pendapatan skpd:
+========================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-pendapatan/572/56
+
+pagu belanja skpd:
+=======================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/belanja/2021/giat/tampil-unit/572/0
+
+
+pagu sub kegiatan skpd:
+=======================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/belanja/2021/giat/list/572/56
+
+pagu rincian belanja sub kegiatan skpd:
+=======================================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/belanja/2021/rinci/tampil-rincian/572/56?kodesbl=56.56.193.481.2275&_=1610266951292
+
+pagu penerimaan pembiayaan opd:
+===============================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pembiayaan/2021/ang/penerimaan/unit/572/0
+
+
+pagu rincian penerimaan pembiayaan opd:
+=======================================
+https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pembiayaan/2021/ang/penerimaan/list/572/56

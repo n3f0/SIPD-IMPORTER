@@ -132,4 +132,8 @@ class Ajax extends BaseController{
             return ['result'=>'1','message'=>'Error Import data'];
         }
     }
+
+    private function import_pendapatan_opd(){
+        
+    }
 }
