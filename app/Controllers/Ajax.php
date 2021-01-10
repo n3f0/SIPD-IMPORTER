@@ -5,7 +5,7 @@ use App\Libraries\Client;
 use App\Models\Urusan;
 use App\Models\Bidang;
 use App\Models\Program;
-use App\Models\Kegiatan;
+use App\Models\Kegtmp;
 
 class Ajax extends BaseController{
 
@@ -103,7 +103,33 @@ class Ajax extends BaseController{
     }
 
     private function import_kegiatan(){
-        $kegiatan=new Kegiatan;
-        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/";
+        $kegiatan=new Kegtmp;
+        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/subgiat/2021/tampil-sub-giat/".$this->session->get('id_daerah')."/0?filter_program=&filter_giat=&filter_sub_giat=";
+        try{
+            $data=$this->client->get($url,$this->session->get('cookie'));
+            $json=json_decode($data['content'])->data;
+            foreach($json as $row){
+                $data=["id_urusan"          =>$row->id_urusan,
+                       "kode_urusan"        =>$row->kode_urusan,
+                       "nama_urusan"        =>substr($row->nama_urusan,strpos($row->nama_urusan,' '),strlen($row->nama_urusan)-strpos($row->nama_urusan,' ')),
+                       "id_bidang_urusan"   =>$row->id_bidang_urusan,
+                       "kode_bidang_urusan" =>$row->kode_bidang_urusan,
+                       "nama_bidang_urusan" =>substr($row->nama_bidang_urusan,strpos($row->nama_bidang_urusan,' '),strlen($row->nama_bidang_urusan)-strpos($row->nama_bidang_urusan,' ')),
+                       "id_program"         =>$row->id_program,
+                       "kode_program"       =>$row->kode_program,
+                       "nama_program"       =>substr($row->nama_program,strpos($row->nama_program,' '),strlen($row->nama_program)-strpos($row->nama_program,' ')),
+                       "id_giat"            =>$row->id_giat,
+                       "kode_giat"          =>$row->kode_giat,
+                       "nama_giat"          =>substr($row->nama_giat,strpos($row->nama_giat,' '),strlen($row->nama_giat)-strpos($row->nama_giat,' ')),
+                       "id_sub_giat"        =>$row->id_sub_giat,
+                       "kode_sub_giat"      =>$row->kode_sub_giat,
+                       "nama_sub_giat"      =>substr($row->nama_sub_giat,strpos($row->nama_sub_giat,' '),strlen($row->nama_sub_giat)-strpos($row->nama_sub_giat,' '))];
+                $kegiatan->insert($data);
+            }
+            return ['result'=>'0','message'=>'success','data'=>$json];
+            
+        }catch(Exception $e){
+            return ['result'=>'1','message'=>'Error Import data'];
+        }
     }
 }
