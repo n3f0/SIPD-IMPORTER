@@ -6,6 +6,8 @@ use App\Models\Urusan;
 use App\Models\Bidang;
 use App\Models\Program;
 use App\Models\Kegtmp;
+use App\Models\Popdtmp;
+use App\Models\Princitmp;
 
 class Ajax extends BaseController{
 
@@ -47,7 +49,7 @@ class Ajax extends BaseController{
                 break;
             case 4:
                 //Import data Kegiatan
-                echo $this->import_kegiatan();
+                echo json_encode($this->import_kegiatan());
                 break;
             case 5:
                 //Import data SubKegiatan
@@ -58,6 +60,13 @@ class Ajax extends BaseController{
             case 7:
                 //import data OPD
                 break;
+            case 8:
+                //import data pendapatan
+                echo json_encode($this->import_pendapatan_opd(2021,2));
+                break;
+            case 9:
+                //import detail pendapatan apbd
+                echo json_encode($this->import_pendapatan_rinci($this->uri->getSegment(4),2021,2));
             default:
                 echo json_encode(['result'=>'1','message'=>'Error Request','data'=>[]]);
         }
@@ -133,7 +142,59 @@ class Ajax extends BaseController{
         }
     }
 
-    private function import_pendapatan_opd(){
-        
+    private function import_pendapatan_opd($tahun,$tahap){
+        $popdtmp=new Popdtmp;
+        $url="https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-unit/".$this->session->get("id_daerah")."/0";
+        try{
+            $data=$this->client->get($url,$this->session->get('cookie'));
+            $json=json_decode($data['content'])->data;
+            foreach($json as $row){
+                $dat=['id_unit'     =>$row->id_unit,
+                    'id_skpd'       =>$row->id_skpd,
+                    'kode_skpd'     =>$row->kode_skpd,
+                    'nama_skpd'     =>substr($row->nama_skpd->nama_skpd,strpos($row->nama_skpd->nama_skpd,' '),strlen($row->nama_skpd->nama_skpd)-strpos($row->nama_skpd->nama_skpd,' ')),
+                    'nilaitotal'   =>(float)$row->nilaitotal,
+                    'nilaimurni'   =>(float)$row->nilaimurni,
+                    'tahun'         =>$tahun,
+                    'tahap'         =>$tahap
+                    ];
+                $popdtmp->insert($dat);
+            }
+            return ['result'=>'0','message'=>'success','data'=>$json];
+        }catch(Exception $e){
+            return ['result'=>'1','message'=>'Error Import data'];
+        }
+    }
+
+    private function import_pendapatan_rinci($id_skpd,$tahun,$tahap){
+        $princitmp=new Princitmp;
+        $url="https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-pendapatan/".$this->session->get('id_daerah')."/".$id_skpd;
+        try{
+            $data=$this->client->get($url,$this->session->get('cookie'));
+            $data['content'];
+            $json=json_decode($data['content'])->data;
+            foreach($json as $row){
+                $dat=[
+                    'id_pendapatan'     =>$row->id_pendapatan,
+                    'kode_akun'         =>$row->kode_akun,
+                    'nama_akun'         =>$row->nama_akun,
+                    'uraian'            =>$row->uraian,
+                    'skpd_koordinator'  =>$row->skpd_koordinator,
+                    'urusan_koordinator'    =>$row->urusan_koordinator,
+                    'program_koordinator'   =>$row->program_koordinator,
+                    'total'             =>$row->total,
+                    'rekening'          =>$row->rekening,
+                    'nilaimurni'        =>$row->nilaimurni,
+                    'id_skpd'           =>$id_skpd,
+                    'tahun'             =>$tahun,
+                    'tahap'             =>$tahap
+                ];
+                $princitmp->insert($dat);
+            }
+            return ['result'=>'0','message'=>'success','data'=>$json];
+        }catch(Exception $e){
+            return ['result'=>'1','message'=>'Error Import data'];
+        }
+
     }
 }
