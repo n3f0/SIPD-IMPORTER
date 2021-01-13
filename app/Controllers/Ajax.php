@@ -8,6 +8,7 @@ use App\Models\Program;
 use App\Models\Kegtmp;
 use App\Models\Popdtmp;
 use App\Models\Princitmp;
+use App\Models\Bopdtmp;
 
 class Ajax extends BaseController{
 
@@ -67,6 +68,12 @@ class Ajax extends BaseController{
             case 9:
                 //import detail pendapatan apbd
                 echo json_encode($this->import_pendapatan_rinci($this->uri->getSegment(4),2021,2));
+                break;
+            case 10:
+                echo json_encode($this->import_belanja_opd(2));
+                break;
+            case 11:
+                echo json_encode($this->import_belanjakeg(2,$this->uri->getSegment(4)));
             default:
                 echo json_encode(['result'=>'1','message'=>'Error Request','data'=>[]]);
         }
@@ -144,7 +151,7 @@ class Ajax extends BaseController{
 
     private function import_pendapatan_opd($tahun,$tahap){
         $popdtmp=new Popdtmp;
-        $url="https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-unit/".$this->session->get("id_daerah")."/0";
+        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-unit/".$this->session->get("id_daerah")."/0";
         try{
             $data=$this->client->get($url,$this->session->get('cookie'));
             $json=json_decode($data['content'])->data;
@@ -168,10 +175,9 @@ class Ajax extends BaseController{
 
     private function import_pendapatan_rinci($id_skpd,$tahun,$tahap){
         $princitmp=new Princitmp;
-        $url="https://nusantaraprov.sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-pendapatan/".$this->session->get('id_daerah')."/".$id_skpd;
+        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/pendapatan/2021/ang/tampil-pendapatan/".$this->session->get('id_daerah')."/".$id_skpd;
         try{
             $data=$this->client->get($url,$this->session->get('cookie'));
-            $data['content'];
             $json=json_decode($data['content'])->data;
             foreach($json as $row){
                 $dat=[
@@ -195,6 +201,51 @@ class Ajax extends BaseController{
         }catch(Exception $e){
             return ['result'=>'1','message'=>'Error Import data'];
         }
-
     }
+
+    private function import_belanja_opd($tahap){
+        $bopdtmp=new Bopdtmp;
+        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/belanja/2021/giat/tampil-unit/".$this->session->get('id_daerah')."/0";
+        try{
+            $data=$this->client->get($url,$this->session->get('cookie'));
+            $json=json_decode($data['content'])->data;
+            foreach($json as $row){
+                $dat=[
+                    'tahun'=>$row->tahun,
+                    'tahap'=>$tahap,
+                    'id_unit'=>$row->id_unit,
+                    'id_skpd'=>$row->id_skpd,
+                    'kode_skpd'=>$row->kode_skpd,
+                    'nama_skpd'=>$row->nama_skpd->nama_skpd,
+                    'total_giat'=>$row->total_giat,
+                    'set_pagu_giat'=>($row->set_pagu_giat!==null)?$row->set_pagu_giat:0,
+                    'set_pagu_skpd'=>$row->set_pagu_skpd,
+                    'pagu_giat'=>($row->pagu_giat!==null)?$row->pagu_giat:0,
+                    'rinci_giat'=>($row->rinci_giat!==null)?$row->rinci_giat:0,
+                    'totalgiat'=>$row->totalgiat,
+                    'batasanpagu'=>$row->batasanpagu,
+                    'nilaipagu'=>($row->nilaipagu!==null)?$row->nilaipagu:0,
+                    'nilaipagumurni'=>($row->nilaipagumurni!==null)?$row->nilaipagumurni:0,
+                    'nilairincian'=>($row->nilairincian!==null)?$row->nilairincian:0,
+                    'realisasi'=>($row->realisasi!==null)?$row->realisasi:0
+                ];
+                $bopdtmp->insert($dat);
+            }
+            return ['result'=>'0','message'=>'success','data'=>$json];
+        }catch(Exception $e){
+            return ['result'=>'1','message'=>'Error Import data'];
+        }
+    }
+
+    private function import_belanjakeg($tahap,$id_skpd){
+        $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/belanja/2021/giat/tampil-giat/".$this->session->get('id_daerah')."/".$id_skpd;
+        try{
+            $data=$this->client->get($url,$this->session->get('cookie'));
+            $json=json_decode($data['content'])->data;
+            return ['result'=>'0','message'=>'success','data'=>$json];
+        }catch(Exception $e){
+            return ['result'=>'1','message'=>'Error Import data'];
+        }
+    }
+
 }
