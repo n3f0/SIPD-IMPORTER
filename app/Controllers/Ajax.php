@@ -216,7 +216,7 @@ class Ajax extends BaseController{
                     'id_unit'=>$row->id_unit,
                     'id_skpd'=>$row->id_skpd,
                     'kode_skpd'=>$row->kode_skpd,
-                    'nama_skpd'=>$row->nama_skpd->nama_skpd,
+                    'nama_skpd'=>substr($row->nama_skpd->nama_skpd,strpos($row->nama_skpd->nama_skpd,' '),strlen($row->nama_skpd->nama_skpd)-strpos($row->nama_skpd->nama_skpd,' ')),
                     'total_giat'=>$row->total_giat,
                     'set_pagu_giat'=>($row->set_pagu_giat!==null)?$row->set_pagu_giat:0,
                     'set_pagu_skpd'=>$row->set_pagu_skpd,
