@@ -9,6 +9,7 @@ use App\Models\Kegtmp;
 use App\Models\Popdtmp;
 use App\Models\Princitmp;
 use App\Models\Bopdtmp;
+use App\Models\Bkegtmp;
 
 class Ajax extends BaseController{
 
@@ -238,10 +239,45 @@ class Ajax extends BaseController{
     }
 
     private function import_belanjakeg($tahap,$id_skpd){
+        $bkegtmp=new Bkegtmp;
         $url="https://".SIPD.".sipd.kemendagri.go.id/daerah/main/budget/belanja/2021/giat/tampil-giat/".$this->session->get('id_daerah')."/".$id_skpd;
         try{
             $data=$this->client->get($url,$this->session->get('cookie'));
             $json=json_decode($data['content'])->data;
+            foreach($json as $row){
+                $dat=[
+                    'id_skpd'           =>$row->id_skpd,
+                    'kode_skpd'         =>$row->kode_skpd,
+                    'nama_skpd'         =>substr($row->nama_skpd,strpos($row->nama_skpd,' '),strlen($row->nama_skpd)-strpos($row->nama_skpd,' ')),
+                    'id_urusan'         =>$row->id_urusan,
+                    'kode_urusan'       =>$row->kode_urusan,
+                    'nama_urusan'       =>substr($row->nama_urusan,strpos($row->nama_urusan,' '),strlen($row->nama_urusan)-strpos($row->nama_urusan,' ')),
+                    'id_bidang_urusan'  =>$row->id_bidang_urusan,
+                    'kode_bidang_urusan'=>$row->kode_bidang_urusan,
+                    'nama_bidang_urusan'=>substr($row->nama_bidang_urusan,strpos($row->nama_bidang_urusan,' '),strlen($row->nama_bidang_urusan)-strpos($row->nama_bidang_urusan,' ')),
+                    'id_sub_skpd'       =>$row->id_sub_skpd,
+                    'kode_sub_skpd'     =>$row->kode_sub_skpd,
+                    'nama_sub_skpd'     =>$row->nama_sub_skpd,
+                    'id_program'        =>$row->id_program,
+                    'kode_program'      =>$row->kode_program,
+                    'nama_program'      =>substr($row->nama_program,strpos($row->nama_program,' '),strlen($row->nama_program)-strpos($row->nama_program,' ')),
+                    'id_giat'           =>$row->id_giat,
+                    'kode_giat'         =>$row->kode_giat,
+                    'nama_giat'         =>substr($row->nama_giat->nama_giat,strpos($row->nama_giat->nama_giat,' '),strlen($row->nama_giat->nama_giat)-strpos($row->nama_giat->nama_giat,' ')),
+                    'kode_bl'           =>$row->nama_giat->kode_bl,
+                    'pagu_giat'         =>($row->pagu_giat!==null)?$row->pagu_giat:0,
+                    'rinci_giat'        =>($row->rinci_giat!==null)?$row->rinci_giat:0,
+                    'id_sub_giat'       =>$row->id_sub_giat,
+                    'kode_sub_giat'     =>$row->kode_sub_giat,
+                    'nama_sub_giat'     =>substr($row->nama_sub_giat->nama_sub_giat,strpos($row->nama_sub_giat->nama_sub_giat,' '),strlen($row->nama_sub_giat->nama_sub_giat)-strpos($row->nama_sub_giat->nama_sub_giat,' ')),
+                    'kode_sbl'          =>$row->kode_sbl,
+                    'pagu'              =>($row->pagu!==null)?$row->pagu:0,
+                    'pagu_indikatif'    =>$row->pagu_indikatif,
+                    'rincian'           =>($row->rincian!==null)?$row->rincian:0,
+                    'sub_giat_locked'   =>$row->sub_giat_locked
+                ];
+                $bkegtmp->insert($dat);
+            }
             return ['result'=>'0','message'=>'success','data'=>$json];
         }catch(Exception $e){
             return ['result'=>'1','message'=>'Error Import data'];
