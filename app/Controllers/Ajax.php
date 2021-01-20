@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Libraries\Client;
+use App\Libraries\Sipkd;
 use App\Models\Urusan;
 use App\Models\Bidang;
 use App\Models\Program;
@@ -17,6 +18,7 @@ class Ajax extends BaseController{
         $this->uri=service('uri');
         $this->session=session();
         $this->client=new Client();
+        $this->sipkd=new Sipkd();
     }
 
     public function index(){
@@ -61,6 +63,7 @@ class Ajax extends BaseController{
                 break;
             case 7:
                 //import data OPD
+                echo json_encode($this->import_opd(2021));
                 break;
             case 8:
                 //import data pendapatan
@@ -77,6 +80,23 @@ class Ajax extends BaseController{
                 echo json_encode($this->import_belanjakeg(2,$this->uri->getSegment(4)));
             default:
                 echo json_encode(['result'=>'1','message'=>'Error Request','data'=>[]]);
+        }
+    }
+
+    private function import_opd($thn){
+        $url='https://'.SIPD.'.sipd.kemendagri.go.id/daerah/main/budget/skpd/'.$thn.'/tampil-skpd/'.$this->session->get('id_daerah').'/0';
+        try{
+            $data=$this->client->get($url,$this->session->get('cookie'));
+            $json=json_decode($data['content'])->data;
+            $sql="insert into daftunit values(?,?,?,?,?,?,?,?)";
+            foreach($json as $row){
+                $param=[$row->id_skpd.'_','3',substr($row->kode_skpd,0,5).substr($row->kode_skpd,15,strlen($row->kode_skpd)-15),$row->nama_skpd,'','','','D'];
+                //echo substr($row->kode_skpd,0,5).substr($row->kode_skpd,15,strlen($row->kode_skpd)-15).'</br>';
+                $this->sipkd->update($sql,$param);
+            }
+            return ['result'=>'0','message'=>'success','data'=>$json];
+        }catch(Exception $e){
+            return ['result'=>'1','message'=>'Error Import data'];
         }
     }
 
@@ -109,9 +129,14 @@ class Ajax extends BaseController{
         try{
             $data=$this->client->get($url,$this->session->get('cookie'));
             $json=json_decode($data['content'])->data;
+            $sql="insert into mpgrm values(?,?,?,?)";
             foreach($json as $row){
-                $data=['id_bidang_urusan'=>$row->id_bidang_urusan,'id_program'=>$row->id_program,'kode_program'=>$row->kode_program,'nama_program'=>substr($row->nama_program,strpos($row->nama_program,' '),strlen($row->nama_program)-strpos($row->nama_program,' '))];
-                $program->insert($data);
+                $tmp=explode('.',$row->kode_program);
+                $kode=$tmp[count($tmp)-1].'.';
+                $param=[$row->id_program.'_',$row->id_bidang_urusan.'_',substr($row->nama_program,strpos($row->nama_program,' '),strlen($row->nama_program)-strpos($row->nama_program,' ')),$kode];
+                $this->sipkd->update($sql,$param);
+                //$data=['id_bidang_urusan'=>$row->id_bidang_urusan,'id_program'=>$row->id_program,'kode_program'=>$row->kode_program,'nama_program'=>substr($row->nama_program,strpos($row->nama_program,' '),strlen($row->nama_program)-strpos($row->nama_program,' '))];
+                //$program->insert($data);
             }
             return ['result'=>'0','message'=>'success','data'=>$json];
         }catch(Exception $e){
